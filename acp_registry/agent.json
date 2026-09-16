@@ -1,0 +1,16 @@
+{
+  "id": "athaniel-brain",
+  "name": "Athaniel Brain",
+  "version": "0.19.0",
+  "description": "Self-improving open-source AI agent by Athaniel with ACP editor integration, persistent memory, skills, and rich tool support.",
+  "repository": "https://github.com/embreythecreator/athaniel-brain",
+  "website": "https://athaniel-brain.embreythecreator.com/docs/user-guide/features/acp",
+  "authors": ["Athaniel"],
+  "license": "MIT",
+  "distribution": {
+    "uvx": {
+      "package": "athaniel-brain[acp]==0.19.0",
+      "args": ["athaniel-acp"]
+    }
+  }
+}

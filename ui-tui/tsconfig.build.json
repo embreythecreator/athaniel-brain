@@ -1,0 +1,8 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "@athaniel/ink": ["src/types/athaniel-ink.d.ts"]
+    }
+  }
+}
