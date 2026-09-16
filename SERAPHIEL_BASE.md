@@ -6,5 +6,5 @@ Athaniel Brain is a **generated sibling** of Seraphiel Brain (embreythecreator/s
 |---|---|
 | Source tag | `seraphim-cut-base-2026-09-15` |
 | Source commit | `1c0fbfcb5b276cc99689dec271243e409bb3d726` |
-| Rebranded tree | `26463bd946b0738739c2a51200235b6ec8d5637d` |
+| Rebranded tree | `8d60dbd08d06aebd9d6dac02ca326de3d28f99a0` |
 | Cut on | 2026-09-16 |
