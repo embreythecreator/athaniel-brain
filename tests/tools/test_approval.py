@@ -845,6 +845,25 @@ class TestWebhookApprovalExclusion:
         assert result["approved"] is False
         assert "api_server" in result["message"]
 
+    def test_api_server_ignores_process_exec_ask(self, monkeypatch):
+        """start_gateway() sets ATHANIEL_EXEC_ASK process-wide; an api_server
+        (Face) turn must still get the unattended deny, not a pending_approval
+        for a card no client renders."""
+        from tools.approval import check_all_command_guards
+
+        self._isolate(monkeypatch)
+        monkeypatch.delenv("ATHANIEL_CRON_SESSION", raising=False)
+        monkeypatch.delenv("ATHANIEL_GATEWAY_SESSION", raising=False)
+        monkeypatch.delenv("ATHANIEL_INTERACTIVE", raising=False)
+        monkeypatch.setenv("ATHANIEL_EXEC_ASK", "1")
+        monkeypatch.setenv("ATHANIEL_SESSION_PLATFORM", "api_server")
+        monkeypatch.setenv("ATHANIEL_SESSION_KEY", "test-api-ask-session")
+
+        result = check_all_command_guards("sudo systemctl restart nginx", "local")
+        assert result.get("status") != "pending_approval"
+        assert result["approved"] is False
+        assert "approvals.unattended_mode" in result["message"]
+
     def test_execute_code_denied_on_unattended_platform(self, monkeypatch):
         """execute_code is denied instantly on unattended platforms (parity with cron)."""
         from tools.approval import check_execute_code_guard
